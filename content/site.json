@@ -31,7 +31,20 @@
     "intro": "A rolling selection of the most recent work — bridal trials, party looks and everything in between.",
     "items": [
       {
-        "image": "/assets/images/uploads/img_5778.jpeg"
+        "image": "/assets/images/uploads/img_5778.jpeg",
+        "caption": "Recent 1"
+      },
+      {
+        "image": "/assets/images/uploads/img_5779.jpeg",
+        "caption": "Recent 2 "
+      },
+      {
+        "image": "/assets/images/uploads/img_5780.jpeg",
+        "caption": "Recent 3 "
+      },
+      {
+        "image": "/assets/images/uploads/img_5783.jpeg",
+        "caption": "Recent 4"
       }
     ]
   },
