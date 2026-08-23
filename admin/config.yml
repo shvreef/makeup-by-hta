@@ -34,6 +34,27 @@ collections:
             fields:
               - { label: Image, name: image, widget: image, required: false }
               - { label: Description for screen readers, name: alt, widget: string, required: false }
+              - label: Focus — across (%)
+                name: focusX
+                widget: number
+                default: 80
+                value_type: int
+                min: 0
+                max: 100
+                hint: >-
+                  Which part of the photo stays in frame on phones, where the
+                  image is cropped narrow. 0 = far left, 50 = middle,
+                  100 = far right. Point this at the face.
+              - label: Focus — down (%)
+                name: focusY
+                widget: number
+                default: 32
+                value_type: int
+                min: 0
+                max: 100
+                hint: >-
+                  Same idea for desktop, where the crop is short and wide.
+                  0 = top, 50 = middle, 100 = bottom.
 
           - label: Homepage — 'The artist' photo
             name: homeAbout

@@ -1,7 +1,9 @@
 {
   "hero": {
     "image": "/assets/images/image-2.jpg",
-    "alt": "Makeup by HTA — finished look"
+    "alt": "Makeup by HTA — finished look",
+    "focusX": 80,
+    "focusY": 32
   },
   "homeAbout": {
     "image": "/assets/images/image-1.jpg",

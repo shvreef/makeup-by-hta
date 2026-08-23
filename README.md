@@ -51,6 +51,12 @@ looks row. Saving commits `content/site.json` (plus any uploaded images) to
 `main`, which deploys automatically.
 
 - Uploaded images land in `assets/images/uploads/`.
+- **Hero focus** — the hero is cropped differently on each device: short and wide
+  on desktop, narrow and tall on a phone (where only about 60% of the image's
+  width fits). The two "Focus" numbers say which part to keep. Because the photo
+  is landscape, desktop is width-constrained so only *down* bites there, and a
+  phone is height-constrained so only *across* bites. Point *across* at the face
+  after swapping the hero photo.
 - Any image slot left empty falls back to the striped placeholder, so the
   layout never collapses.
 - Recent looks shows the first 5 photos, newest first. The whole section hides
