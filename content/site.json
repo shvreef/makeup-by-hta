@@ -1,0 +1,36 @@
+{
+  "hero": {
+    "image": "/assets/images/image-2.jpg",
+    "alt": "Makeup by HTA — finished look"
+  },
+  "homeAbout": {
+    "image": "/assets/images/image-1.jpg",
+    "alt": "Makeup by HTA — bridal look"
+  },
+  "aboutPortrait": {
+    "image": "",
+    "alt": "HTA, makeup artist"
+  },
+  "services": {
+    "bridal": { "image": "", "alt": "Bridal makeup look" },
+    "party": { "image": "", "alt": "Party makeup look" },
+    "oneToOne": { "image": "", "alt": "1-1 makeup lesson" }
+  },
+  "recentLooks": {
+    "eyebrow": "Recent looks",
+    "heading": "Freshly out of the chair.",
+    "intro": "A rolling selection of the most recent work — bridal trials, party looks and everything in between.",
+    "items": []
+  },
+  "portfolio": [
+    { "category": "bridal", "label": "Bridal · 01", "image": "" },
+    { "category": "party",  "label": "Party · 01",  "image": "" },
+    { "category": "bridal", "label": "Bridal · 02", "image": "" },
+    { "category": "party",  "label": "Party · 02",  "image": "" },
+    { "category": "bridal", "label": "Bridal · 03", "image": "" },
+    { "category": "party",  "label": "Party · 03",  "image": "" },
+    { "category": "bridal", "label": "Bridal · 04", "image": "" },
+    { "category": "party",  "label": "Party · 04",  "image": "" },
+    { "category": "bridal", "label": "Bridal · 05", "image": "" }
+  ]
+}

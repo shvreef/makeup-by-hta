@@ -14,8 +14,13 @@ This is the source for the site deployed at `roaring-daffodil-aeac06` on Netlify
   automatically — no local copies are needed.
 - `assets/fonts/` — the Google Fonts (Cormorant Garamond, etc.) used by the
   page, saved locally instead of being fetched from Google Fonts at runtime.
-- `assets/images/` — the two photos used on the page.
+- `assets/images/` — the photos used on the page. CMS uploads land in
+  `assets/images/uploads/`.
 - `assets/favicon.svg` — the circled "h" mark from the nav, as the browser icon.
+- `content/site.json` — every image path on the site, plus the Recent looks and
+  portfolio entries. The page fetches this at load, so editing it changes the
+  site without touching `index.html`.
+- `admin/` — the Decap CMS editor (see "Editing content" below).
 - `serve.js` — a dependency-free local preview server.
 - `netlify.toml` — Netlify build config (publish this folder, no build step).
 
@@ -37,7 +42,38 @@ Netlify dashboard.
 
 Any other static host (GitHub Pages, Vercel, …) can serve the folder as-is.
 
-## Editing
+## Editing content (the CMS)
+
+Go to <https://roaring-daffodil-aeac06.netlify.app/admin/> and log in with
+GitHub. Every photo on the site is editable there: the homepage hero, the two
+"artist" photos, the three service cards, the portfolio grid, and the Recent
+looks row. Saving commits `content/site.json` (plus any uploaded images) to
+`main`, which deploys automatically.
+
+- Uploaded images land in `assets/images/uploads/`.
+- Any image slot left empty falls back to the striped placeholder, so the
+  layout never collapses.
+- Recent looks shows the first 5 photos, newest first. The whole section hides
+  itself when the list is empty.
+- **Logging in requires the GitHub OAuth provider to be configured once** on the
+  Netlify project, under Project configuration → Access control → OAuth.
+
+The runtime seeds its own copy of the defaults and deep-merges the fetched file
+over them, so a missing or half-written `content/site.json` degrades to the
+built-in content rather than blanking a section.
+
+## Contact form
+
+The enquiry form posts to Netlify Forms. Submissions appear under Forms in the
+Netlify dashboard and are emailed to the address configured there (Forms →
+Settings and usage → Form notifications).
+
+The hidden `<form name="contact">` at the bottom of `index.html` is what Netlify
+parses at deploy time to register the field names — the visible form is rendered
+by React, which Netlify's build-time scan cannot see, so **that static twin must
+stay in place**. Spam is filtered with a `bot-field` honeypot.
+
+## Editing markup
 
 Content and copy live in the `<x-dc>` block near the top of `index.html`.
 Interactive behaviour (state, form handling, etc.) lives in the

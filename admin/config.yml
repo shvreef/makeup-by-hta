@@ -1,0 +1,108 @@
+# Decap CMS — edits are committed straight to GitHub, which triggers a Netlify
+# deploy. Logging in requires the GitHub OAuth provider to be configured on the
+# Netlify project (Project configuration -> Access control -> OAuth).
+backend:
+  name: github
+  repo: shvreef/makeup-by-hta
+  branch: main
+  commit_messages:
+    update: 'Content: update {{collection}} via CMS'
+    uploadMedia: 'Content: upload {{path}}'
+    deleteMedia: 'Content: delete {{path}}'
+
+media_folder: assets/images/uploads
+public_folder: /assets/images/uploads
+
+# Squash the "Editorial workflow" step — small site, publish straight away.
+publish_mode: simple
+
+collections:
+  - name: site
+    label: Site content
+    files:
+      - name: images
+        label: Images & sections
+        file: content/site.json
+        format: json
+        description: >-
+          Every photo on the site. Leave an image empty to keep the striped
+          placeholder in that slot.
+        fields:
+          - label: Homepage hero
+            name: hero
+            widget: object
+            fields:
+              - { label: Image, name: image, widget: image, required: false }
+              - { label: Description for screen readers, name: alt, widget: string, required: false }
+
+          - label: Homepage — 'The artist' photo
+            name: homeAbout
+            widget: object
+            fields:
+              - { label: Image, name: image, widget: image, required: false }
+              - { label: Description for screen readers, name: alt, widget: string, required: false }
+
+          - label: About page portrait
+            name: aboutPortrait
+            widget: object
+            fields:
+              - { label: Image, name: image, widget: image, required: false }
+              - { label: Description for screen readers, name: alt, widget: string, required: false }
+
+          - label: Service photos
+            name: services
+            widget: object
+            fields:
+              - label: Bridal
+                name: bridal
+                widget: object
+                fields:
+                  - { label: Image, name: image, widget: image, required: false }
+                  - { label: Description for screen readers, name: alt, widget: string, required: false }
+              - label: Party
+                name: party
+                widget: object
+                fields:
+                  - { label: Image, name: image, widget: image, required: false }
+                  - { label: Description for screen readers, name: alt, widget: string, required: false }
+              - label: 1-1 lesson
+                name: oneToOne
+                widget: object
+                fields:
+                  - { label: Image, name: image, widget: image, required: false }
+                  - { label: Description for screen readers, name: alt, widget: string, required: false }
+
+          - label: Recent looks (homepage)
+            name: recentLooks
+            widget: object
+            fields:
+              - { label: Small heading above, name: eyebrow, widget: string, required: false }
+              - { label: Heading, name: heading, widget: string, required: false }
+              - { label: Intro paragraph, name: intro, widget: text, required: false }
+              - label: Photos
+                name: items
+                widget: list
+                required: false
+                label_singular: Photo
+                summary: '{{fields.caption}}'
+                description: >-
+                  Shows the first 5. Newest first — add new photos at the top.
+                  The whole section hides itself if this list is empty.
+                fields:
+                  - { label: Image, name: image, widget: image }
+                  - { label: Caption, name: caption, widget: string, required: false }
+
+          - label: Portfolio grid
+            name: portfolio
+            widget: list
+            label_singular: Portfolio item
+            summary: '{{fields.label}}'
+            fields:
+              - { label: Image, name: image, widget: image, required: false }
+              - { label: Caption, name: label, widget: string }
+              - label: Category
+                name: category
+                widget: select
+                options:
+                  - { label: Bridal, value: bridal }
+                  - { label: Party, value: party }
